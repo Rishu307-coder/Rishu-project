@@ -1,646 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rishu Kumar | Portfolio</title>
-
-    <!-- Google Font (optional, but makes it look nicer) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <title>Book Ticket</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0f172a;
-            color: #e5e7eb;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            backdrop-filter: blur(12px);
-            background: rgba(15, 23, 42, 0.85);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-        }
-
-        .logo {
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a {
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -0.25rem;
-            width: 0;
-            height: 2px;
-            background: #38bdf8;
-            transition: width 0.2s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0 3rem;
-        }
-
-        .hero-inner {
-            display: grid;
-            grid-template-columns: 2fr 1.3fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.6);
-            padding: 0.35rem 0.8rem;
-            border-radius: 999px;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 {
-            font-size: 2.4rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .hero h1 span {
-            color: #38bdf8;
-        }
-
-        .hero-subtitle {
-            color: #9ca3af;
-            margin-bottom: 1.5rem;
-            font-size: 0.98rem;
-            max-width: 32rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            border-radius: 999px;
-            padding: 0.7rem 1.4rem;
-            border: 1px solid rgba(148, 163, 184, 0.6);
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-            border-color: transparent;
-            color: #0f172a;
-            font-weight: 600;
-            box-shadow: 0 16px 40px rgba(56, 189, 248, 0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 24px 60px rgba(56, 189, 248, 0.3);
-        }
-
-        .btn-outline:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: #e5e7eb;
-            transform: translateY(-1px);
-        }
-
-        .hero-photo-card {
-            border-radius: 1.8rem;
-            padding: 1.6rem;
-            background: radial-gradient(circle at top left, #1d4ed8 0, #020617 55%);
-            border: 1px solid rgba(148, 163, 184, 0.5);
-            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
-        }
-
-        .hero-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 1.5rem;
-            background: linear-gradient(145deg, #38bdf8, #0ea5e9);
-            margin-bottom: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-avatar-inner {
-            position: absolute;
-            inset: 10px;
-            border-radius: 1.2rem;
-            background: radial-gradient(circle at 30% 20%, #f9fafb 0, #e5e7eb 40%, #9ca3af 100%);
-        }
-
-        .hero-photo-card h3 {
-            margin-bottom: 0.2rem;
-        }
-
-        .hero-photo-card p {
-            font-size: 0.85rem;
-            color: #cbd5f5;
-            margin-bottom: 1rem;
-        }
-
-        .hero-meta {
-            font-size: 0.8rem;
-            color: #9ca3af;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.5rem;
-        }
-
-        .hero-meta span {
-            display: inline-block;
-        }
-
-        /* Sections */
-        section {
-            padding: 2.5rem 0;
-            border-top: 1px solid rgba(30, 64, 175, 0.6);
-        }
-
-        section h2 {
-            font-size: 1.6rem;
-            margin-bottom: 0.3rem;
-        }
-
-        section .section-subtitle {
-            font-size: 0.85rem;
-            color: #9ca3af;
-            margin-bottom: 1.5rem;
-        }
-
-        /* About */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 2fr 1.2fr;
-            gap: 2rem;
-        }
-
-        .about-text {
-            font-size: 0.98rem;
-            color: #e5e7eb;
-        }
-
-        .about-text p + p {
-            margin-top: 0.7rem;
-        }
-
-        .about-list {
-            list-style: none;
-            font-size: 0.9rem;
-            color: #cbd5f5;
-        }
-
-        .about-list li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-card {
-            border-radius: 1rem;
-            padding: 1rem;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(148, 163, 184, 0.5);
-            font-size: 0.9rem;
-        }
-
-        .skill-card h3 {
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 0.5rem;
-        }
-
-        .skill-tag {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 999px;
-            background: rgba(30, 64, 175, 0.9);
-            border: 1px solid rgba(129, 140, 248, 0.7);
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            border-radius: 1.3rem;
-            padding: 1.2rem;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(148, 163, 184, 0.6);
-            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.7);
-            transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.9);
-            border-color: #38bdf8;
-        }
-
-        .project-title {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .project-meta {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #9ca3af;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-desc {
-            font-size: 0.88rem;
-            color: #e5e7eb;
-            margin-bottom: 0.6rem;
-        }
-
-        .project-links {
-            font-size: 0.8rem;
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .project-links a {
-            border-bottom: 1px dashed rgba(148, 163, 184, 0.7);
-        }
-
-        .project-links a:hover {
-            border-bottom-style: solid;
-        }
-
-        /* Contact */
-        .contact-inner {
-            display: grid;
-            grid-template-columns: 1.7fr 1.3fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .contact-text {
-            font-size: 0.95rem;
-            color: #e5e7eb;
-        }
-
-        .contact-card {
-            border-radius: 1.3rem;
-            padding: 1.2rem;
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid rgba(148, 163, 184, 0.7);
-            font-size: 0.9rem;
-        }
-
-        .contact-row {
-            margin-bottom: 0.7rem;
-        }
-
-        .contact-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            color: #9ca3af;
-        }
-
-        .contact-value {
-            margin-top: 0.2rem;
-        }
-
-        footer {
-            border-top: 1px solid rgba(30, 64, 175, 0.6);
-            padding: 1.2rem 0 2rem;
-            font-size: 0.8rem;
-            color: #9ca3af;
+        h1 {
+            /* display:block; */
             text-align: center;
+            background-color: rgb(237, 235, 224);
+            margin: 3px;
+            border-radius: 5px;
+            box-shadow: 3px 3px 3px black;
+            transition: all 0.3s ease-out;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .hero-inner,
-            .about-grid,
-            .contact-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding-top: 3rem;
-            }
-
-            .hero-inner {
-                gap: 2rem;
-            }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            /* Makes it fill the page */
+            z-index: -1;
+            /* Sends video to background */
         }
 
-        @media (max-width: 640px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
+        h1:hover {
+            background-color: rgb(253, 251, 232);
+            transform: scale(1.05);
+            background-color: rgba(35, 35, 30, 0.141);
         }
     </style>
+    <style>
+        .Class {
+            width: 350px;
+            margin-top: 100px;
+            align-self: center;
+            display: flex;
+            border: 3px solid black;
+            box-sizing: border-box;
+            border-radius: 6px;
+
+            box-shadow: 3px 3px 3px black;
+            padding: 5px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            /* position: fixed; */
+            /* top: 10px; */
+            background-color: white;
+            justify-self: center;
+            padding: 20px;
+        }
+
+        .Class #div1 {
+            font-family: cursive;
+            background-color: rgb(210, 162, 99);
+            border: 3px solid black;
+            border-radius: 6px;
+            box-sizing: border-box;
+            box-shadow: 3px 3px 3px black;
+            margin: 5px;
+            padding: 5px;
+            flex-shrink: 3;
+            /* align-self: center; */
+            text-align: center;
+
+
+        }
+
+        .Class #div2 {
+            font-family: cursive;
+            background-color: rgb(210, 162, 99);
+            border: 3px solid black;
+            border-radius: 6px;
+            box-sizing: border-box;
+            box-shadow: 3px 3px 3px black;
+            margin: 5px;
+            padding: 5px;
+            /* align-self: center; */
+            text-align: center;
+            flex-shrink: 3;
+        }
+
+        .Class #div3 {
+            font-family: cursive;
+            background-color: rgb(210, 162, 99);
+            border: 3px solid black;
+            border-radius: 6px;
+            box-sizing: border-box;
+            box-shadow: 3px 3px 3px black;
+            margin: 5px;
+            padding: 5px;
+            /* align-self: center; */
+            text-align: center;
+            flex-shrink: 3;
+
+        }
+
+        .Class #div4 {
+            font-family: cursive;
+            background-color: rgb(210, 162, 99);
+            border: 3px solid black;
+            border-radius: 6px;
+            box-sizing: border-box;
+            box-shadow: 3px 3px 3px black;
+            margin: 5px;
+            padding: 5px;
+            /* align-self: center; */
+            text-align: center;
+            flex-shrink: 3;
+
+        }
+
+        .Class #div5 {
+            font-family: cursive;
+            background-color: rgb(210, 162, 99);
+            border: 3px solid black;
+            border-radius: 6px;
+            box-sizing: border-box;
+            box-shadow: 3px 3px 3px black;
+            margin: 5px;
+            padding: 5px;
+            /* align-self: center; */
+            text-align: center;
+            flex-shrink: 3;
+
+        }
+
+        .Class #div6 {
+            font-family: cursive;
+            border: 3px solid black;
+            border-radius: 6px;
+            box-sizing: border-box;
+            box-shadow: 3px 3px 3px black;
+            margin: 5px;
+            /* align-self: center; */
+            text-align: center;
+            flex-shrink: 3;
+        }
+        
+
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+    
+
 </head>
+
 <body>
-<header>
-    <div class="container nav">
-        <div class="logo">Rishu.dev</div>
-        <nav class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </div>
-</header>
-
-<main>
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container hero-inner">
-            <div>
-                <span class="tag">Aspiring Web Developer</span>
-                <h1>Hi, I’m <span>Rishu Kumar</span>.</h1>
-                <p class="hero-subtitle">
-                    I’m a student exploring HTML, CSS, Python, and the world of engineering.
-                    I enjoy turning ideas into clean, simple web pages while building a strong foundation in core concepts.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        View my projects →
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        Contact me
-                    </a>
-                </div>
+    <h1>BOOK TICKET FOR MANALI TRIP</h1>
+    <video autoplay loop singleline muted width="100%" height="200px">
+        <source src="Video.mp4" type="video/mp4">
+    </video>
+    <div class="Class">
+        <form action="submit.php" method="post">
+            <div id="div1">
+                <label for="username">Name:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your name" required>
             </div>
 
-            <aside class="hero-photo-card">
-                <div class="hero-avatar">
-                    <div class="hero-avatar-inner"></div>
-                </div>
-                <h3>Rishu Kumar</h3>
-                <p>Student • Aspiring Web Developer</p>
-                <div class="hero-meta">
-                    <span>📍 India</span>
-                    <span>💻 Frontend basics</span>
-                    <span>📚 Engineering & Physics</span>
-                    <span>🎯 Learning every day</span>
-                </div>
-            </aside>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p class="section-subtitle">Who I am and what I’m focusing on right now.</p>
-
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>
-                        I’m Rishu, a learner with a strong interest in web development and technology.
-                        I’m currently practicing HTML, CSS, and Python while studying engineering concepts like physics,
-                        electromagnetism, and optics.
-                    </p>
-                    <p>
-                        My goal is to build a solid base in programming and frontend development so I can create
-                        responsive, user-friendly websites and grow into a full-stack developer in the future.
-                    </p>
-                </div>
-
-                <div>
-                    <ul class="about-list">
-                        <li>✓ Comfortable with basic HTML and CSS</li>
-                        <li>✓ Practicing Python programming problems</li>
-                        <li>✓ Exploring AutoCAD and engineering tools</li>
-                        <li>✓ Interested in real-world tech and finance systems</li>
-                    </ul>
-                </div>
+            <div id="div2">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
-        </div>
-    </section>
 
-    <!-- Skills -->
-    <section id="skills">
-        <div class="container">
-            <h2>Skills</h2>
-            <p class="section-subtitle">Technologies and areas I’m currently learning and improving.</p>
-
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Web Basics</h3>
-                    <p>Building simple static web pages and practicing layout design.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">Responsive Layout</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Programming</h3>
-                    <p>Solving beginner Python problems to improve logic and syntax.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Basic Algorithms</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Engineering & Tools</h3>
-                    <p>Understanding core physics and exploring tools used in technical fields.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Physics</span>
-                        <span class="skill-tag">Electromagnetism</span>
-                        <span class="skill-tag">AutoCAD (Basics)</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <h3>Soft Skills</h3>
-                    <p>Focused on consistent learning and problem solving with patience.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Self-Learner</span>
-                        <span class="skill-tag">Curious</span>
-                        <span class="skill-tag">Detail-Oriented</span>
-                    </div>
-                </div>
+            <div id="div3">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
-        </div>
-    </section>
 
-    <!-- Projects -->
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <p class="section-subtitle">A few simple things I’ve built or practiced while learning.</p>
-
-            <div class="projects-grid">
-                <article class="project-card">
-                    <div class="project-meta">HTML • CSS</div>
-                    <h3 class="project-title">Personal Profile Page</h3>
-                    <p class="project-desc">
-                        A basic web page with my name, hobbies, and a simple layout using headings, paragraphs,
-                        and basic styling. It helped me understand structure and spacing.
-                    </p>
-                    <div class="project-links">
-                        <span>Code: (local project)</span>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-meta">Python</div>
-                    <h3 class="project-title">Practice Problems Collection</h3>
-                    <p class="project-desc">
-                        A set of beginner Python scripts for list operations, string manipulation,
-                        and basic logic. This improved my understanding of loops and conditions.
-                    </p>
-                    <div class="project-links">
-                        <span>Scripts: (practice files)</span>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-meta">Learning</div>
-                    <h3 class="project-title">Engineering Notes</h3>
-                    <p class="project-desc">
-                        Clean, structured notes on topics like electromagnetism, optics, and lasers,
-                        prepared to make complex concepts easier to revise and understand.
-                    </p>
-                    <div class="project-links">
-                        <span>Notes: (personal)</span>
-                    </div>
-                </article>
+            <div id="div4">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="1" max="100" placeholder="Enter your age">
             </div>
-        </div>
-    </section>
 
-    <!-- Contact -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p class="section-subtitle">Want to connect or share feedback? Reach out anytime.</p>
-
-            <div class="contact-inner">
-                <div class="contact-text">
-                    <p>
-                        I’m always open to suggestions, resources, or collaboration ideas that can help me learn more.
-                        If you’d like to share feedback on my work, guide me, or just say hello, feel free to contact me.
-                    </p>
-                    <p style="margin-top:0.7rem;">
-                        You can email me directly using the contact details on the right.
-                    </p>
-                </div>
-
-                <aside class="contact-card">
-                    <div class="contact-row">
-                        <div class="contact-label">Email</div>
-                        <div class="contact-value">
-                            <!-- Change this email to your real one -->
-                            <a href="mailto:rishu.example@email.com">rishu.example@email.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-row">
-                        <div class="contact-label">GitHub (optional)</div>
-                        <div class="contact-value">
-                            <!-- Change this to your real GitHub if you have one -->
-                            <a href="#" onclick="return false;">github.com/your-username</a>
-                        </div>
-                    </div>
-                    <div class="contact-row">
-                        <div class="contact-label">Current Focus</div>
-                        <div class="contact-value">
-                            Improving HTML/CSS structure, practicing Python logic, and understanding core engineering topics.
-                        </div>
-                    </div>
-                </aside>
+            <div id="div5">
+                <span>Gender:</span>
+                <label for="gender-male">
+                    <input type="radio" id="gender-male" name="gender" value="Male"> Male
+                </label>
+                <label for="gender-female">
+                    <input type="radio" id="gender-female" name="gender" value="Female"> Female
+                </label>
+                <label for="gender-others">
+                    <input type="radio" id="gender-others" name="gender" value="Others"> Others
+                </label>
             </div>
-        </div>
-    </section>
-</main>
 
-<footer>
-    <div class="container">
-        © <span id="year"></span> Rishu Kumar • Built with HTML & CSS while learning web development.
+            <div id="div6">
+                <input type="submit" value="Submit">
+                <button type="reset">Reset</button>
+            </div>
+        </form>
     </div>
 
-    <script>
-        // Set current year automatically
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-</footer>
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>
